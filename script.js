@@ -55,12 +55,12 @@ function addElement() {
         let newCover = document.createElement('div');
         newCover.className = "book";
         newCover.innerHTML = `
+        <button id="del">X</button>   
         <p class="para" id="tLine"><b>${title}</b></p>
         <p class="para" id="aLine"><i>${author}</i></p>
         <p class="para">${year}</p>
         <p class="para">${page} pages</p>
         <p class="para">${read}</p>
-        <button id="del">X</button>     
         `
 
         booklist.appendChild(newCover);
