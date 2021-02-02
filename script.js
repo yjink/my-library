@@ -43,7 +43,7 @@ addBook.prototype = Object.create(Book.prototype);
 
 function deleteBook() {
 
-}
+};
 // TBC
 
 function addElement() {
@@ -57,8 +57,8 @@ function addElement() {
         newCover.innerHTML = `
         <p class="para" id="tLine"><b>${title}</b></p>
         <p class="para" id="aLine"><i>${author}</i></p>
-        <p class="para"${year}</p>
-        <p class="para"${page} pages</p>
+        <p class="para">${year}</p>
+        <p class="para">${page} pages</p>
         <p class="para">${read}</p>
         <button id="del>X</button>     
         `
