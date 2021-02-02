@@ -60,7 +60,7 @@ function addElement() {
         <p class="para">${year}</p>
         <p class="para">${page} pages</p>
         <p class="para">${read}</p>
-        <button id="del>X</button>     
+        <button id="del">X</button>     
         `
 
         booklist.appendChild(newCover);
@@ -101,10 +101,10 @@ submit.addEventListener('click', () => {
         let element = myLibrary[i];
         if (element.title === t && element.author === a) {
             alert("This book is already in the library!");
-            inLibrary = false;
+            inLibrary = true;
             break;
         } else {
-            inLibrary = true;
+            inLibrary = false;
         }
     }
 
