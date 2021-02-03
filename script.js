@@ -41,10 +41,21 @@ function addBook(title, author, year, page, read) {
 
 addBook.prototype = Object.create(Book.prototype);
 
-function deleteBook() {
+function deleteBook(arr, delBook) {
+    // delBook is the book to delete
+    let newArr = [];
+    for (let j = 0; j < arr.length; j++) {
+        let element = arr[j];
+        let bookTitle = element.title.toLowerCase().split(' ').join('');
+        if (bookTitle !== delBook) {
+            newArr.push(element);
+        }
+    }
 
+    myLibrary = newArr;
+    addElement();
+    // refresh page with updated array
 };
-// TBC
 
 function addElement() {
     while(booklist.lastChild) {
@@ -53,9 +64,11 @@ function addElement() {
 
     myLibrary.map(function({title, author, page, year, read}) {
         let newCover = document.createElement('div');
+        let bookTitle = title.toLowerCase().split(' ').join('');
+
         newCover.className = "book";
         newCover.innerHTML = `
-        <button id="del">X</button>   
+        <button id="del" value=${bookTitle} onclick="deleteBook(myLibrary, value)">X</button>   
         <p class="para" id="tLine"><b>${title}</b></p>
         <p class="para" id="aLine"><i>${author}</i></p>
         <p class="para">${year}</p>
@@ -65,6 +78,14 @@ function addElement() {
 
         booklist.appendChild(newCover);
     })
+}
+
+function clearForm() {
+    title.value = '';
+    author.value = '';
+    year.value = '';
+    page.value = '';
+    check.checked=false;
 }
 
 
@@ -113,6 +134,13 @@ submit.addEventListener('click', () => {
         myLibrary.push(newTitle);
         addElement();
     }
+
+
+    clearForm();
+})
+
+clear.addEventListener('click', () => {
+    clearForm();
 })
 
 
