@@ -81,7 +81,7 @@ header a {
     margin: 15% auto auto auto;
     padding: 5px 5px 5px 5px;
     width: 90%;
-    min-width: 75px;
+    min-width: 105px;
     max-width: 250px;
     height: 90%;
     background-color: aliceblue;
@@ -114,4 +114,8 @@ footer {
     left: 40%;
     width: 100%;
     font-size: 14px;
+}
+
+footer a {
+    color: black;
 }
