@@ -81,7 +81,8 @@ header a {
     margin: 15% auto auto auto;
     padding: 5px 5px 5px 5px;
     width: 90%;
-    min-width: 50px;
+    min-width: 75px;
+    max-width: 250px;
     height: 90%;
     background-color: aliceblue;
     text-align: center;
