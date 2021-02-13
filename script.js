@@ -62,7 +62,7 @@ function addElement() {
         booklist.removeChild(booklist.lastChild);
     }
 
-    myLibrary.map(function({title, author, page, year, read}) {
+    myLibrary.map(function({title, author, year, page, read}) {
         let newCover = document.createElement('div');
         let bookTitle = title.toLowerCase().split(' ').join('');
 
@@ -102,9 +102,21 @@ exit.addEventListener('click', () => {
 submit.addEventListener('click', () => {
     let t = title.value;
     let a = author.value;
-    let y = year.value;
-    let p = page.value;
+    let y;
+    let p;
     let c;
+
+    // if year is not a number
+    if (isNaN(year.value)) {
+        y = 'Unknown Year';
+    } else y = year.value;
+
+    // if page is not a number 
+    if (isNaN(page.value)) {
+        p = 'Unknown';
+    } else p = page.value;
+
+    // checkbox 
 
     if (check.checked) {
         c = true;
@@ -114,7 +126,7 @@ submit.addEventListener('click', () => {
 
     let newTitle = titleName;
 
-    newTitle = new addBook(t, a, p, y, c);
+    newTitle = new addBook(t, a, y, p, c);
 
     let inLibrary = false;
 
