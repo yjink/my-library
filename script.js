@@ -31,11 +31,16 @@ function addBook(title, author, year, page, read) {
     this.author = author;
     this.year = year;
     this.page = page;
+    this.read = read;
+    this.checked;
+    this.box;
     
     if (read) {
-        this.read = 'Read';
+        this.checked = 'Read';
+        this.box = "checked"
     } else {
-        this.read = 'Unread';
+        this.checked = 'Unread';
+        this.box = "";
     }
 }
 
@@ -62,22 +67,53 @@ function addElement() {
         booklist.removeChild(booklist.lastChild);
     }
 
-    myLibrary.map(function({title, author, year, page, read}) {
+    myLibrary.map(function({title, author, year, page, read, checked, box}) {
+        // box checks and unchecks checkbox
+        
         let newCover = document.createElement('div');
-        let bookTitle = title.toLowerCase().split(' ').join('');
+        let titleVar = title.toLowerCase().split(' ').join('');
 
         newCover.className = "book";
         newCover.innerHTML = `
-        <button id="del" value=${bookTitle} onclick="deleteBook(myLibrary, value)">X</button>   
+        <button id="del" value=${titleVar} onclick="deleteBook(myLibrary, value)">X</button>   
         <p class="para" id="tLine"><b>${title}</b></p>
         <p class="para" id="aLine"><i>${author}</i></p>
         <p class="para">${year}</p>
         <p class="para">${page} pages</p>
-        <p class="para">${read}</p>
+        <p class="para">
+            <input type="checkbox" id="cLine" value=${titleVar} ${box} onchange="isRead(myLibrary, value)"> ${checked}
+        </p>
         `
 
         booklist.appendChild(newCover);
     })
+}
+
+function isRead(arr, val) {
+    // checkbox function
+    let newArr = [];
+    for (let k = 0; k < arr.length; k++) {
+        let element = arr[k];
+        let titleVar = element.title.toLowerCase().split(' ').join('');
+
+        if (val === titleVar) {
+            if (element.checked === "Read") {
+                element.checked = "Unread";
+                element.box = "";
+            } else {
+                element.checked = "Read";
+                element.box = "checked";
+            }
+
+            newArr.push(element);
+        } else {
+            newArr.push(element);
+        }
+    }
+
+    myLibrary = newArr;
+    addElement();
+
 }
 
 function clearForm() {
