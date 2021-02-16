@@ -24,7 +24,7 @@ header p {
 
 header a {
     color: white;
-    text-decoration: none;
+    text-decoration: none; 
 }
 
 #formBG {
@@ -41,7 +41,7 @@ header a {
 
 #form {
     width: 40%;
-    min-width: 250px;
+    min-width: 300px;
     padding: auto auto auto auto;
     margin: 10% auto auto auto;
     text-align: center;
@@ -69,10 +69,10 @@ header a {
 
 #booklist {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     padding: auto auto auto auto;
     margin: auto auto auto auto;
-    grid-gap: 4%;
+    grid-gap: 3%;
 }
 
 .book {
@@ -80,10 +80,9 @@ header a {
     border-left: 3px dashed grey;
     margin: 15% auto auto auto;
     padding: 5px 5px 5px 5px;
-    width: 90%;
-    min-width: 150px;
-    max-width: 250px;
-    height: 90%;
+    min-width: 220px;
+    max-width: 220px;
+    height: 100%;
     background-color: aliceblue;
     text-align: center;
 }
@@ -109,10 +108,8 @@ header a {
 }
 
 footer {
-    position: fixed;
-    bottom: 0px;
-    left: 40%;
-    width: 100%;
+    margin-top: 25%;
+    text-align: center;
     font-size: 14px;
 }
 
